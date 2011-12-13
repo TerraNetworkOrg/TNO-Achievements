@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Class-Path: Stats/lib/mysql.jar Stats/lib/sqlite.jar Stats.jar CraftIRC.jar GroupManager.jar iConomy.jar
+
+
+
+
+

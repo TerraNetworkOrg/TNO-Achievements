@@ -1,0 +1,31 @@
+name: Achievements
+main: com.nidefawl.Achievements.Achievements
+version: 1.2.0
+author: TerraNetworkOrg(orig.nidefal)
+depend: [Stats]
+softdepend: [CraftIRC,Vault]
+commands:
+    listachievements:
+        description: Lists loaded achievements
+        usage: /<command>
+        aliases: listach
+    achievements:
+        description: Lists achievements you have
+        usage: /<command>
+        aliases: ach
+    reloadachievements:
+        description: Reloads achievements.txt
+        usage: /<command>
+        aliases: reloadach
+    checkachievements:
+        description: Checks outstanding achievements
+        usage: /<command>
+        aliases: checkach
+    deleteachievements:
+        description: Delete a players achievements
+        usage: /<command> <player> [achievement-name] -f 
+        aliases: delach
+    treasurehunt:
+        description: Delete a players achievements
+        usage: /<command>
+        aliases: treasure

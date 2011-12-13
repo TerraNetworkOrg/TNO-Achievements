@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<project name="Achievements" basedir="." default="build">
+ 	
+	<property name="bin" value="bin" />
+	<property name="dist" value="dist" />
+	<property name="src" value="src" />
+	<property name="name" value="Achievements" />
+	<property name="version" value="0.99.1" />
+	<property name="resources" value="resources" />
+	<property name="author" value="nidefawl" />
+	
+	<path id="classpath">
+    	<pathelement location="lib/BOSEconomy.jar" />
+		<pathelement location="lib/craftbukkit-0.0.1-SNAPSHOT.jar" />
+		<pathelement location="lib/CraftIRC.jar" />
+		<pathelement location="lib/Essentials.jar" />
+		<pathelement location="lib/EssentialsGroupManager.jar" />
+		<pathelement location="lib/Register-1.5.jar" />
+		<pathelement location="lib/Stats.jar" />
+   	</path>
+  	
+	<buildnumber file=".build.number" />
+	
+	<!-- Anwendung bauen  -->
+	<target name="build" description="Build the plugin" depends="zip" />
+ 	
+ 	<!-- Build a jar file -->
+	<target name="jar" depends="compile">
+		<copy file="${resources}/plugin.yml" tofile="${bin}/plugin.yml">
+			<filterchain>
+				<replacetokens>
+					<token key="VERSION" value="${version}-b${build.number}" />
+					<token key="NAME" value="${name}" />
+					<token key="AUTHOR" value="${author}" />
+				</replacetokens>
+			</filterchain>
+		</copy>
+ 		
+		<jar jarfile="${dist}/${name}.jar">
+			<fileset dir="${bin}"/>
+			<fileset dir="${src}" includes="**/*.java" />
+		</jar>
+	</target>
+ 		
+	<!-- build a zip file -->
+	<target name="zip" depends="jar" description="Zip .jar and config.yml into a zip file">
+		<zip destfile="${dist}/${name}-${version}-b${build.number}.zip">
+			<fileset dir="${dist}" includes="${name}.jar" />
+			<zipfileset dir="${resources}" includes="config.yml" prefix="${name}" />
+		</zip>
+	</target>
+	
+ 	<!-- Clean up -->
+	<target name="clean.dist" description="Deletes temporary build files">
+		<delete dir="${dist}" />
+  	</target>
+ 	
+ 	<!-- Compile the source code -->
+ 	<target name="compile" depends="clean.classes, clean.dist">
+ 		 		
+ 		<mkdir dir="bin" />
+ 	   	<javac srcdir="${src}"
+ 	    	destdir="${bin}"
+ 	        debug="false"
+ 	        deprecation="true"
+ 	        optimize="true" >
+			<classpath refid="classpath" />
+ 	   	</javac>
+ 	</target>
+
+	<!-- Delete temporary build files -->
+	<target name="clean.classes" description="Deletes temporary build files">
+	    <delete dir="${bin}" />
+	    <delete> 
+	    	<fileset dir="." includes="**/*~" defaultexcludes="no"/>
+	    </delete>
+	</target>	
+</project>
