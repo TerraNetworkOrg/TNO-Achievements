@@ -60,15 +60,25 @@ public class AchievementPlayerListener extends PlayerListener {
 	 */
 	@Override
 	public void onPlayerMove(PlayerMoveEvent event) {
+		
 		if (event.isCancelled())
 			return;
 		
 		if (plugin.permission.has(event.getPlayer(), "achievements.check") && plugin.permission.has(event.getPlayer(), "achievements.discover")){
+			plugin.playerWorldNew = event.getPlayer().getWorld();
 			plugin.playerDistNew = event.getPlayer().getLocation();
+			if (plugin.playerWorldOld == null) {
+				plugin.playerWorldOld = plugin.playerWorldNew;
+				return;
+			}
 			if (plugin.playerDistOld == null) {
 				plugin.playerDistOld = plugin.playerDistNew;
 				return;
-			}		
+			}	
+			if(plugin.playerWorldNew != plugin.playerWorldOld) {
+				plugin.playerDistOld = event.getPlayer().getLocation();
+				plugin.playerDistNew = event.getPlayer().getLocation();
+			}
 			if(plugin.playerDistNew.distance(plugin.playerDistOld) > Achievements.RangeDiscoveryMode) {
 				//AchMessaging.send(event.getPlayer(), ChatColor.LIGHT_PURPLE + "Move move :D");
 				plugin.playerDistOld = plugin.playerDistNew;
