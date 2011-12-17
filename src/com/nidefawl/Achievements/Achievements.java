@@ -53,7 +53,7 @@ public class Achievements extends JavaPlugin {
 	public static int RangeDiscoveryMode = 3;
 	public boolean useCraftIRC = false;
 	public final static Double version = 1.0;
-	public static String logprefix = "[Achievements 2.0.0]";
+	public static String logprefix = "[Achievements 2.0.1]";
 	private final static Yaml yaml = new Yaml(new SafeConstructor());
 	//private String name = "Achievements";
 	private String listLocation = "achievements.txt";
