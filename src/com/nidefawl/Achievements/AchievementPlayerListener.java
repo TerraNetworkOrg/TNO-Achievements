@@ -78,19 +78,19 @@ public class AchievementPlayerListener extends PlayerListener {
 			if(plugin.playerWorldNew != plugin.playerWorldOld) {
 				plugin.playerDistOld = event.getPlayer().getLocation();
 				plugin.playerDistNew = event.getPlayer().getLocation();
+				plugin.playerWorldOld = plugin.playerWorldNew;
+				return;
 			}
 			if(plugin.playerDistNew.distance(plugin.playerDistOld) > Achievements.RangeDiscoveryMode) {
 				//AchMessaging.send(event.getPlayer(), ChatColor.LIGHT_PURPLE + "Move move :D");
 				plugin.playerDistOld = plugin.playerDistNew;
+				plugin.playerWorldOld = plugin.playerWorldNew;
 				plugin.checkDiscover(event.getPlayer());
 			}
 		}
 		else if (!plugin.permission.has(event.getPlayer(), "achievements.check")){
 			if (StatsSettings.debugOutput) {
-				plugin.playerDistNew = event.getPlayer().getLocation();
-				if(plugin.playerDistNew.distance(plugin.playerDistOld) > Achievements.RangeDiscoveryMode) {
-					Achievements.LogInfo("When using achievements.discover, the player needs achievements.check , too!");
-				}				
+					Achievements.LogInfo("When using achievements.discover, the player needs achievements.check , too!");		
 			}
 		}
 		else{
