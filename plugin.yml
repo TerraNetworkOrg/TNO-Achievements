@@ -1,9 +1,9 @@
 name: Achievements
 main: com.nidefawl.Achievements.Achievements
-version: 1.2.0
-author: TerraNetworkOrg(orig.nidefal)
-depend: [Stats]
-softdepend: [CraftIRC,Vault]
+version: 2.0.1
+author: TerraNetworkOrg(orig.nidefawl)
+depend: [Stats,Vault]
+softdepend: [CraftIRC]
 commands:
     listachievements:
         description: Lists loaded achievements
