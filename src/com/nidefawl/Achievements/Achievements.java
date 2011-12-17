@@ -18,6 +18,7 @@ import net.milkbowl.vault.permission.Permission;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -82,6 +83,8 @@ public class Achievements extends JavaPlugin {
 	private AchievementPlayerListener playerListener = null;
 	public Location playerDistOld = null;
 	public Location playerDistNew = null;
+	public World playerWorldOld = null;
+	public World playerWorldNew = null;
 	
 	private Boolean setupEconomy()
     {
